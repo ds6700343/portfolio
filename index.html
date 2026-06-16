@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepak Sharma · Operations & Business Development</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* RESET & ROOT */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #0D2340;
+      --teal: #00B4D8;
+      --teal-light: #90E0EF;
+      --slate: #1E3A5F;
+      --ice: #EAF6FB;
+      --off-white: #F7F9FC;
+      --text: #1A2634;
+      --muted: #5A7490;
+      --white: #FFFFFF;
+      --gold: #C8A951;
+      --shadow: 0 12px 30px -12px rgba(0, 20, 40, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(13, 35, 64, 0.96);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      border-bottom: 1px solid rgba(0, 180, 216, 0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo span {
+      color: var(--teal);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--teal);
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(145deg, var(--navy) 0%, #0A3556 60%, #063248 100%);
+      display: flex;
+      align-items: center;
+      padding: 100px 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(0, 180, 216, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 180, 216, 0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-accent-circle {
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 180, 216, 0.12);
+      pointer-events: none;
+    }
+
+    .hero-accent-circle::after {
+      content: '';
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 180, 216, 0.08);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 720px;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--teal);
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .hero-name .highlight {
+      color: var(--teal);
+    }
+
+    .hero-title {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 36px;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      border: 1px solid rgba(0, 180, 216, 0.3);
+      color: var(--teal-light);
+      background: rgba(0, 180, 216, 0.05);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 14px 32px;
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--teal-light);
+      transform: translateY(-2px);
+    }
+
+    /* HERO STATS */
+    .hero-stat-bar {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      z-index: 2;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 180, 216, 0.15);
+      border-left: 3px solid var(--teal);
+      padding: 18px 24px;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+      min-width: 140px;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 96px 80px;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 40px;
+      height: 1px;
+      background: var(--teal);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 56px;
+      line-height: 1.2;
+    }
+
+    /* ABOUT with image */
+    #about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-image-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--ice);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300"><rect width="400" height="300" fill="%23dcebf5"/><circle cx="200" cy="120" r="48" fill="%23b0cbd9"/><circle cx="200" cy="120" r="44" fill="%23c5dce8"/><circle cx="200" cy="120" r="22" fill="%2381a9c4"/><path d="M100 260 Q200 200 300 260 L300 300 L100 300 Z" fill="%2381a9c4"/><path d="M100 260 Q200 200 300 260 L300 300 L100 300 Z" fill="%239abfd8" opacity="0.6"/><rect x="140" y="200" width="120" height="30" rx="6" fill="%236f95b0"/></svg>');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .about-text p strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 16px;
+      margin-top: 12px;
+    }
+
+    .expertise-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--ice);
+    }
+
+    .expertise-item::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* EXPERIENCE */
+    #experience {
+      background: var(--off-white);
+    }
+
+    .experience-timeline {
+      position: relative;
+    }
+
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--teal), transparent);
+    }
+
+    .exp-item {
+      padding-left: 40px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--teal);
+    }
+
+    .exp-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .exp-company {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .exp-bullets {
+      list-style: none;
+    }
+
+    .exp-bullets li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      padding: 4px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .exp-bullets li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+
+    /* REVENUE */
+    #revenue {
+      background: var(--navy);
+    }
+
+    #revenue .section-title {
+      color: var(--white);
+    }
+
+    .revenue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .revenue-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 180, 216, 0.15);
+      border-radius: 8px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(2px);
+    }
+
+    .revenue-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+    }
+
+    .revenue-company {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+
+    .revenue-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .revenue-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .revenue-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.45);
+      width: 36px;
+      flex-shrink: 0;
+    }
+
+    .revenue-bar-wrap {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      height: 6px;
+    }
+
+    .revenue-bar {
+      height: 6px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0;
+    }
+
+    .revenue-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--white);
+      width: 100px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .revenue-highlight {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.65;
+      border-top: 1px solid rgba(0, 180, 216, 0.15);
+      padding-top: 18px;
+    }
+
+    .revenue-highlight strong {
+      color: var(--teal);
+    }
+
+    /* ACHIEVEMENTS */
+    #achievements {
+      background: var(--white);
+    }
+
+    .achieve-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .achieve-card {
+      background: var(--off-white);
+      border-radius: 8px;
+      padding: 28px 22px;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.25s, transform 0.25s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .achieve-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-4px);
+    }
+
+    .achieve-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(0, 180, 216, 0.05));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+    }
+
+    .achieve-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .achieve-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* VALUE */
+    #value {
+      background: var(--ice);
+    }
+
+    .value-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .value-statement {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.45;
+      margin-bottom: 20px;
+    }
+
+    .value-statement em {
+      color: var(--teal);
+      font-style: normal;
+    }
+
+    .value-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .value-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .pillar {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: var(--white);
+      border-radius: 8px;
+      border-left: 3px solid var(--teal);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .pillar-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .pillar-title {
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 2px;
+      font-size: 0.95rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: linear-gradient(145deg, var(--navy) 0%, #0A3556 100%);
+      padding: 80px;
+      text-align: center;
+    }
+
+    #contact .section-label {
+      justify-content: center;
+    }
+
+    #contact .section-label::after {
+      display: none;
+    }
+
+    #contact .section-label::before {
+      content: '';
+      flex: 1;
+      max-width: 40px;
+      height: 1px;
+      background: var(--teal);
+    }
+
+    #contact .section-title {
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .contact-sub {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 1rem;
+      margin-bottom: 48px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .contact-items {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item:hover {
+      color: var(--teal);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 180, 216, 0.1);
+      border: 1px solid rgba(0, 180, 216, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0, 0, 1), transform 0.7s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* responsive */
+    @media (max-width: 1024px) {
+      .hero-stat-bar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 64px 24px;
+      }
+
+      #hero {
+        padding: 100px 24px 60px;
+      }
+
+      .about-grid,
+      .revenue-grid,
+      .value-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .achieve-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #contact {
+        padding: 64px 24px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .achieve-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-tag {
+        font-size: 0.55rem;
+        padding: 4px 10px;
+      }
+
+      .exp-item {
+        padding-left: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">D<span>.</span>Sharma</div>
+    <div class="nav-links">
+      <a href="#about">Profile</a>
+      <a href="#experience">Experience</a>
+      <a href="#revenue">Impact</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid-lines"></div>
+    <div class="hero-accent-circle"></div>
+    <div class="hero-content fade-up">
+      <div class="hero-eyebrow">Portfolio 2025</div>
+      <h1 class="hero-name">Deepak<br><span class="highlight">Sharma</span></h1>
+      <p class="hero-title">Operations &amp; Business Development Leader in Financial Services, Banking, E-Governance
+        &amp; Channel Growth</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Operations Management</span>
+        <span class="hero-tag">Business Development</span>
+        <span class="hero-tag">Channel Growth</span>
+        <span class="hero-tag">Financial Services</span>
+        <span class="hero-tag">Financial Inclusion</span>
+      </div>
+      <a href="#contact" class="hero-cta">Get in Touch ↓</a>
+    </div>
+    <div class="hero-stat-bar fade-up">
+      <div class="stat-card">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">₹4.82Cr</div>
+        <div class="stat-label">Peak Annual Revenue</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Major Sectors</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">Executive Profile</div>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <!-- No Image starts  -->
+      <!-- <div class="about-image-wrap" aria-label="Deepak Sharma professional portrait"></div> -->
+       <!-- No Image ends  -->
+
+      <!-- Image starts -->
+      <div class="about-image-wrap" style="background-image: url('deepak.jpeg'); 
+            background-size: cover; 
+            background-position: center;" aria-label="Deepak Sharma professional portrait">
+      </div>
+      <!-- Image ends -->
+
+
+      <div class="fade-up">
+        <div class="about-text">
+          <p>Results-driven <strong>Operations &amp; Business Development professional</strong> with over 10 years of
+            experience spanning Financial Services, Banking Operations, E-Governance, Channel Management, Distributor
+            Network Development, and Revenue Growth.</p>
+          <p>I bring <strong>proven expertise in scaling partner ecosystems</strong>, expanding market presence, and
+            driving financial inclusion initiatives. I have led high-performance teams across multiple territories and
+            successfully managed banking partnerships, channel networks, and large-scale operational programs.</p>
+          <p>My approach combines <strong>data-driven decision making</strong> with relationship-first leadership —
+            building trust at every level of the partner and stakeholder ecosystem to deliver sustainable, measurable
+            business growth.</p>
+        </div>
+        <div class="section-label" style="margin-bottom:10px; margin-top:16px;">Core Expertise</div>
+        <div class="expertise-grid">
+          <div class="expertise-item">Operations Management</div>
+          <div class="expertise-item">Business Expansion</div>
+          <div class="expertise-item">Channel Sales</div>
+          <div class="expertise-item">Distributor Networks</div>
+          <div class="expertise-item">Banking Partnerships</div>
+          <div class="expertise-item">Revenue Growth Strategy</div>
+          <div class="expertise-item">MIS &amp; Analytics</div>
+          <div class="expertise-item">Stakeholder Management</div>
+          <div class="expertise-item">Team Coaching</div>
+          <div class="expertise-item">Financial Inclusion</div>
+          <div class="expertise-item">E-Governance</div>
+          <div class="expertise-item">Process Optimization</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="experience-timeline">
+      <div class="exp-item fade-up">
+        <div class="exp-period">JAN 2023 – PRESENT</div>
+        <div class="exp-role">Assistant Manager – Operations &amp; Sales</div>
+        <div class="exp-company">Starfin India Pvt. Ltd.</div>
+        <ul class="exp-bullets">
+          <li>Led operations for financial services, insurance, and digital service portfolios across multiple
+            territories.</li>
+          <li>Built and managed VLE, retailer, and advisor networks across multiple states.</li>
+          <li>Executed strategic business expansion initiatives, increasing market penetration through partner
+            acquisition and activation.</li>
+          <li>Strengthened partner engagement through structured training programs.</li>
+          <li>Scaled revenue from ₹33.22 lakh to ₹4.82 crore in a single year through network expansion and sales
+            operations.</li>
+        </ul>
+      </div>
+      <div class="exp-item fade-up">
+        <div class="exp-period">NOV 2018 – DEC 2022</div>
+        <div class="exp-role">Assistant Manager – Operations</div>
+        <div class="exp-company">Vayam Technologies Ltd.</div>
+        <ul class="exp-bullets">
+          <li>Managed end-to-end operations for financial services and e-governance projects.</li>
+          <li>Led onboarding and performance management of channel partners across multiple districts.</li>
+          <li>Coordinated with banking institutions and government stakeholders for PMJAY implementation and financial
+            inclusion initiatives.</li>
+          <li>Enhanced productivity through coaching and capability-building programs.</li>
+        </ul>
+      </div>
+      <div class="exp-item fade-up">
+        <div class="exp-period">JUL 2015 – OCT 2018</div>
+        <div class="exp-role">Sales Coordinator – Operations</div>
+        <div class="exp-company">Medico Electrodes International Ltd.</div>
+        <ul class="exp-bullets">
+          <li>Managed B2B sales coordination and customer relationship management.</li>
+          <li>Supported dealer and distributor network expansion across healthcare markets.</li>
+          <li>Strengthened relationships with hospitals and clinics, improving service delivery and customer
+            satisfaction.</li>
+          <li>Delivered consistent multi-year revenue growth from ₹1.5 Cr to ₹16.35 Cr through strategic network
+            development.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVENUE -->
+  <section id="revenue">
+    <div class="section-label" style="color:var(--teal);">Quantified Impact</div>
+    <h2 class="section-title">Revenue Growth</h2>
+    <div class="revenue-grid">
+      <div class="revenue-card fade-up">
+        <div class="revenue-company">Starfin India Pvt. Ltd.</div>
+        <div class="revenue-rows">
+          <div class="revenue-row">
+            <div class="revenue-year">2023</div>
+            <div class="revenue-bar-wrap">
+              <div class="revenue-bar" data-pct="54"></div>
+            </div>
+            <div class="revenue-val">₹35 Cr</div>
+          </div>
+          <div class="revenue-row">
+            <div class="revenue-year">2024</div>
+            <div class="revenue-bar-wrap">
+              <div class="revenue-bar" data-pct="74"></div>
+            </div>
+            <div class="revenue-val">₹48.5 Cr</div>
+          </div>
+          <div class="revenue-row">
+            <div class="revenue-year">2025</div>
+            <div class="revenue-bar-wrap">
+              <div class="revenue-bar" data-pct="100"></div>
+            </div>
+            <div class="revenue-val">₹65.2 Cr</div>
+          </div>
+          <div class="revenue-row">
+            <div class="revenue-year">2026*</div>
+            <div class="revenue-bar-wrap">
+              <div class="revenue-bar" data-pct="58"></div>
+            </div>
+            <div class="revenue-val">₹38.4  Cr</div>
+          </div>
+        </div>
+        <div class="revenue-highlight">Achieved <strong>continous revenue growth</strong> in every year through strategic
+          partner network activation, channel expansion, and sales operations.</div>
+      </div>
+      <div class="revenue-card fade-up">
+        <div class="revenue-company">Medico Electrodes International Ltd.</div>
+        <div class="revenue-rows">
+          <div class="revenue-row">
+            <div class="revenue-year">2015</div>
+            <div class="revenue-bar-wrap">
+              <div class="revenue-bar" data-pct="9"></div>
+            </div>
+            <div class="revenue-val">₹1.5 Cr</div>
+          </div>
+          <div class="revenue-row">
+            <div class="revenue-year">2016</div>
+            <div class="revenue-bar-wrap">
+              <div class="revenue-bar" data-pct="34"></div>
+            </div>
+            <div class="revenue-val">₹5.5 Cr</div>
+          </div>
+          <div class="revenue-row">
+            <div class="revenue-year">2017</div>
+            <div class="revenue-bar-wrap">
+              <div class="revenue-bar" data-pct="56"></div>
+            </div>
+            <div class="revenue-val">₹9.2 Cr</div>
+          </div>
+          <div class="revenue-row">
+            <div class="revenue-year">2018*</div>
+            <div class="revenue-bar-wrap">
+              <div class="revenue-bar" data-pct="100"></div>
+            </div>
+            <div class="revenue-val">₹16.35 Cr</div>
+          </div>
+        </div>
+        <div class="revenue-highlight">Delivered <strong>10× multi-year growth</strong> by strengthening dealer
+          relationships, expanding distribution channels, and improving customer acquisition across healthcare markets.
+          <em>(*Partial year)</em></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="section-label">Key Wins</div>
+    <h2 class="section-title">Achievements</h2>
+    <div class="achieve-grid">
+      <div class="achieve-card fade-up">
+        <div class="achieve-icon">📈</div>
+        <div class="achieve-title">Revenue Growth</div>
+        <div class="achieve-desc">Generated multi-crore business growth through strategic expansion, achieving
+          exceptional revenue acceleration in Starfin operations within a single fiscal year.</div>
+      </div>
+      <div class="achieve-card fade-up">
+        <div class="achieve-icon">🔗</div>
+        <div class="achieve-title">Channel Development</div>
+        <div class="achieve-desc">Built and managed extensive distributor, retailer, advisor, and VLE networks across
+          multiple states, creating a scalable and high-performing partner ecosystem.</div>
+      </div>
+      <div class="achieve-card fade-up">
+        <div class="achieve-icon">🏦</div>
+        <div class="achieve-title">Financial Inclusion</div>
+        <div class="achieve-desc">Supported large-scale banking and government initiatives including PMJAY
+          implementation, driving meaningful financial inclusion across underserved territories.</div>
+      </div>
+      <div class="achieve-card fade-up">
+        <div class="achieve-icon">⚙️</div>
+        <div class="achieve-title">Operational Excellence</div>
+        <div class="achieve-desc">Improved productivity, reporting, compliance, and service delivery through process
+          optimization and structured team coaching &amp; development programs.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE -->
+  <section id="value">
+    <div class="section-label">Why Deepak</div>
+    <h2 class="section-title">Value Proposition</h2>
+    <div class="value-inner">
+      <div class="fade-up">
+        <div class="value-statement">A growth-focused leader who turns <em>partner networks into revenue engines</em>
+          and operational complexity into competitive advantage.</div>
+        <p class="value-text">I combine operational rigour with strategic business development instincts — bringing the
+          right people, processes, and partnerships together to build scalable ecosystems, strengthen stakeholder
+          relationships, and deliver sustainable, measurable revenue growth.</p>
+      </div>
+      <div class="value-pillars fade-up">
+        <div class="pillar">
+          <div class="pillar-icon">🎯</div>
+          <div>
+            <div class="pillar-title">Strategic Execution</div>
+            <div class="pillar-desc">Translating high-level business goals into ground-level execution plans with clear
+              accountability and outcome metrics.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🤝</div>
+          <div>
+            <div class="pillar-title">Partner-First Leadership</div>
+            <div class="pillar-desc">Deep expertise in onboarding, engaging, and growing channel partner networks that
+              deliver consistent results.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📊</div>
+          <div>
+            <div class="pillar-title">Data-Driven Decisions</div>
+            <div class="pillar-desc">Leveraging MIS, performance analytics, and market intelligence to drive informed
+              growth strategies.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Contact</h2>
+    <p class="contact-sub">Open to opportunities in Sales Operations, Business Development, and Process Management.
+      Let's build something great together.</p>
+    <div class="contact-items">
+      <a class="contact-item" href="mailto:DS6700343@gmail.com">
+        <div class="contact-icon">✉️</div> DS6700343@gmail.com
+      </a>
+      <a class="contact-item" href="tel:+918130547192">
+        <div class="contact-icon">📱</div> +91 81305 47192
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // Intersection Observer for fade-up
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Animate revenue bars
+    const bars = document.querySelectorAll('.revenue-bar');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const bar = e.target;
+          const pct = bar.getAttribute('data-pct');
+          bar.style.width = pct + '%';
+          barObserver.unobserve(bar);
+        }
+      });
+    }, { threshold: 0.25 });
+    bars.forEach(b => barObserver.observe(b));
+
+    // Hero fade on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('#hero .fade-up').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), 200 + i * 150);
+      });
+    });
+  </script>
+</body>
+
+</html>
